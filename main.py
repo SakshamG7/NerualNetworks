@@ -5,15 +5,35 @@
 """
 # Imports
 import matrix as mx
+import json # Remove later and make your own parser.
 
 class NeuralNetwork(object):
     """
     The Simple Neural Network made by Saksham Goel
     """
-    def __init__(self, weights: list[list[list[float]]], biases: list[list[float]], activation_type: str):
-        self.weights = weights
-        self.biases = biases
-    
+    def __init__(self, input_size: int = None, output_size: int = None, weights: list[list[list[float]]] = None, biases: list[list[float]] = None, activation_type: str = None):
+        """
+        Initializes the feed forward neural network.
+        :param input_size: The number of inputs the model has.
+        :param output_size: The number of outputs the model has.
+        :param weights: The weights of the network.
+        :param biases: The biases of the network.
+        :param activation_type: The activation type of the neural network, e.g. sigmoid, ReLU, etc.
+        """
+        # Loads a very basic model if anything is missing
+        if None in (input_size, output_size, weights, biases, activation_type):
+            self.input_size: int = 1
+            self.output_size: int = 1
+            self.weights: list[list[list[float]]] = [[[1.0]]]
+            self.biases: list[list[float]] = [[1.0]]
+            self.activation_type: str = "sigmoid"
+        else:
+            self.input_size: int = input_size
+            self.output_size: int = output_size
+            self.weights: list[list[list[float]]] = weights
+            self.biases: list[list[float]] = biases
+            self.activation_type: str = activation_type
+
     def forward_pass(self, x):
         pass
 
@@ -22,13 +42,22 @@ class NeuralNetwork(object):
 
 
 # File Loading/Saving Logic for the Neural Network Library
-def load_neural_network(fileName: str):
+def load_neural_network(fileName: str) -> NeuralNetwork:
     """
-    :precondition: The .json must be formatted as
+    Loads the Neural Network file an d
+    :file_conditions: The .json must be formatted as:
+    {"version": 1, "input_size": int, "output_size": int, "weights": list[list[list[float]]], "biases": list[list[float]], "activation_type": str}
     :param fileName: The local file path to the model's structure (.json)
     :return: returns the loaded neural network
     """
+    with open(fileName, "r") as f:
+        # Yea, maybe later
+        # for line in f:
+            # dict(zip(*iter(line.split(':'))))
+        data = json.loads(f.read())
+
     pass
+    return NeuralNetwork()
 
 def save_neural_network(fileName: str):
     pass
