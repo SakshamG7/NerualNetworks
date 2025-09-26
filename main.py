@@ -5,7 +5,9 @@
 """
 # Imports
 import matrix as mx
+from math_at_home import *
 import json # Remove later and make your own parser.
+
 
 class NeuralNetwork(object):
     """
@@ -65,4 +67,4 @@ def save_neural_network(fileName: str):
 
 if __name__ == '__main__':
     # Mini tests
-    print(transpose([[1, 2], [3, 4]]))
+    print(mx.transpose([[1, 2], [3, 4]]))

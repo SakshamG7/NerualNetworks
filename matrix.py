@@ -1,3 +1,9 @@
+"""
+@author: Saksham Goel
+@description: Matrix operations using lists. (we have numpy at home)
+@version: 1.0
+"""
+
 def transpose(x: list[list[float]]) -> list[list[float]]:
     """
     Transposes the matrix (swaps rows and columns) of tensor "x"
@@ -35,4 +41,3 @@ def matrix_mult(x: list[list[float]], y: list[list[float]]) -> list[list[float]]
     :param y: The second tensor to be multiplied to the first.
     :return: Returns the product of the two tensors.
     """
-    pass
