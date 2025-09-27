@@ -45,7 +45,7 @@ def tanh(x: float) -> float:
 
 
 def relu(x: float) -> float:
-    return max(0, x)
+    return max(0.0, x)
 
 
 def leaky_relu(x: float) -> float:
@@ -65,7 +65,7 @@ def swish(x: float) -> float:
 
 
 def mish(x: float) -> float:
-    return x * tanh(log(1 + exp(x)))
+    return x * tanh(log(1 + exp(x), EUCLIDS_NUMBER))
 
 
 def gelu(x: float) -> float:
@@ -73,7 +73,7 @@ def gelu(x: float) -> float:
 
 
 def hard_sigmoid(x: float) -> float:
-    return max(0, min(1, 0.2 * x + 0.5))
+    return max(0.0, min(1.0, 0.2 * x + 0.5))
 
 def linear(x: float) -> float:
     return x
